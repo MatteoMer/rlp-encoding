@@ -25,6 +25,7 @@ impl From<&str> for RLPEncoding {
             encoding = Vec::from([0x80]);
         } else if value.len() == 1 && (0x00..0x7f).contains(&value.as_bytes()[0]) {
             encoding = Vec::from([value.as_bytes()[0]])
+        } else if (2..55).contains(value.len()) {
         }
         Self { encoding }
     }
@@ -45,7 +46,7 @@ impl<T> From<Vec<T>> for RLPEncoding {
 fn main() {
     //let input: Vec<u8> = vec![];
     //let input = "";
-    let input = "a";
+    let input = "t";
     //let input = "test";
     println!("[rlp-encoding] starting to encode");
 
